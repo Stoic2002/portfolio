@@ -65,7 +65,103 @@ export const mockProjects: Project[] = [
           '/images/projects/vallet/vallet-1.png'
         ],
         createdAt: '2024-11-15'
+      },
+      {
+        id: '5',
+        name: 'CogniHash',
+        description: 'Sebuah platform Web3 yang dibangun dengan React yang mengintegrasikan Artificial Intelligence untuk menganalisis smart contract di blockchain Solana. Aplikasi ini memungkinkan pengguna untuk mendapatkan insight mendalam tentang smart contract melalui analisis AI yang komprehensif, kemudian melakukan transaksi dengan token/coin yang telah dianalisis. Platform ini menyediakan dashboard analitik yang user-friendly dan sistem trading yang terintegrasi khusus untuk ekosistem Solana.',
+        category: 'Web Development',
+        technologies: ['React', 'TypeScript', 'Solana Web3.js', 'AI/ML', 'Smart Contract Analysis', 'Blockchain', 'Cryptocurrency'],
+        repositoryLink: '', // Isi dengan link GitHub repository Anda
+        images: [
+          '/images/projects/cognihash/cognihash-1.png',
+          '/images/projects/cognihash/cognihash-2.png',
+          '/images/projects/cognihash/cognihash-3.png',
+          '/images/projects/cognihash/cognihash-4.png',
+          '/images/projects/cognihash/cognihash-5.png',
+          '/images/projects/cognihash/cognihash-6.png',
+
+        ],
+        createdAt: '2024-12-15'
+      },
+      {
+        id: '6',
+        name: 'Notuline',
+        description: 'Sebuah aplikasi mobile yang dibangun dengan Flutter untuk merekam dan menganalisis meeting secara otomatis. Aplikasi ini menggunakan teknologi AI untuk mengkonversi rekaman audio meeting menjadi transkrip yang kemudian dianalisis untuk menghasilkan ringkasan meeting yang komprehensif. Fitur-fitur utama meliputi perekaman audio berkualitas tinggi, speech-to-text conversion, AI-powered summarization, manajemen catatan meeting, dan export hasil dalam berbagai format. Sangat cocok untuk profesional yang ingin mengoptimalkan produktivitas meeting mereka.',
+        category: 'Mobile Development',
+        technologies: ['Flutter', 'Dart', 'AI/ML', 'Speech-to-Text', 'Audio Recording', 'Natural Language Processing'],
+        repositoryLink: '', // Isi dengan link GitHub repository Anda
+        images: [
+          '/images/projects/notuline/notuline-1.png',
+          '/images/projects/notuline/notuline-2.png',
+          '/images/projects/notuline/notuline-3.png',
+          '/images/projects/notuline/notuline-4.png',
+          '/images/projects/notuline/notuline-5.png',
+        ],
+        createdAt: '2024-10-15'
+      },
+      {
+        id: '7',
+        name: 'PLN Optical Probe',
+        description: 'Sebuah aplikasi mobile yang dibangun dengan Flutter untuk membaca meteran listrik PLN menggunakan teknologi optical probe dengan sensor infrared. Aplikasi ini memungkinkan petugas atau pengguna untuk melakukan pembacaan meteran listrik secara otomatis dan akurat melalui koneksi USB ke perangkat optical probe. Fitur-fitur utama meliputi koneksi hardware via USB, pembacaan data meteran real-time, validasi dan verifikasi data, penyimpanan riwayat pembacaan, serta export data dalam format yang sesuai dengan standar PLN.',
+        category: 'Mobile Development',
+        technologies: ['Flutter', 'Dart', 'USB Communication', 'Infrared Sensor', 'Hardware Integration', 'Serial Communication', 'Data Processing'],
+        repositoryLink: '', // Isi dengan link GitHub repository Anda
+        images: [
+          '/images/projects/pln-optical-probe/pln-optical-probe-1.jpeg',
+          '/images/projects/pln-optical-probe/pln-optical-probe-2.jpeg',
+          '/images/projects/pln-optical-probe/pln-optical-probe-3.jpeg',
+          '/images/projects/pln-optical-probe/pln-optical-probe-4.jpeg',
+          '/images/projects/pln-optical-probe/pln-optical-probe-5.jpeg',
+          '/images/projects/pln-optical-probe/pln-optical-probe-6.jpeg'
+        ],
+        createdAt: '2024-09-15'
+      },
+      {
+        id: '8',
+        name: 'Kick Avenue',
+        description: 'Sebuah platform marketplace web yang dibangun dengan React yang khusus menyediakan produk-produk branded berkualitas tinggi seperti sepatu sneakers, fashion, dan aksesoris premium. Aplikasi ini menawarkan pengalaman berbelanja yang eksklusif dengan fitur-fitur seperti katalog produk branded terkurasi, sistem autentikasi produk, pencarian dan filter canggih, sistem bid dan buy now, profil seller terverifikasi, serta sistem review dan rating. Platform ini memberikan jaminan keaslian produk dan pengalaman belanja yang aman untuk pecinta produk branded.',
+        category: 'Web Development',
+        technologies: ['React', 'TypeScript', 'Node.js', 'Payment Gateway'],
+        repositoryLink: '', // Isi dengan link GitHub repository Anda
+        images: [
+          '/images/projects/kick-avenue/kick-avenue-1.png',
+          '/images/projects/kick-avenue/kick-avenue-2.png',
+          '/images/projects/kick-avenue/kick-avenue-3.png'
+        ],
+        createdAt: '2024-08-15'
+      },
+      {
+        id: '9',
+        name: 'E-Pengawasan DPRD Jateng',
+        description: 'Sebuah platform digital yang dibangun dengan React untuk mendukung fungsi pengawasan DPRD Jawa Tengah. Aplikasi ini mengintegrasikan teknologi Artificial Intelligence untuk mengklasifikasi dan menganalisis dokumen-dokumen pengawasan secara otomatis. Fitur utama meliputi AI-powered document classification, web scraping untuk monitoring isu-isu publik, sistem analisis sentimen, dashboard monitoring real-time, manajemen dokumen digital, serta reporting dan analytics yang komprehensif. Platform ini membantu anggota DPRD dalam melakukan pengawasan yang lebih efektif dan berbasis data terhadap pelaksanaan kebijakan pemerintah daerah.',
+        category: 'Web Development',
+        technologies: ['React', 'JavaScript', 'AI/ML', 'Document Classification', 'Web Scraping', 'Natural Language Processing', 'Data Analytics', 'Node.js'],
+        repositoryLink: '', // Isi dengan link GitHub repository Anda
+        images: [
+          '/images/projects/e-pengawasan/e-pengawasan-1.png',
+          '/images/projects/e-pengawasan/e-pengawasan-2.png',
+          '/images/projects/e-pengawasan/e-pengawasan-3.png'
+        ],
+        createdAt: '2024-07-15'
+      },
+      {
+        id: '10',
+        name: 'Kutim',
+        description: 'Kutim adalah aplikasi manajemen proyek yang dibangun menggunakan Flutter untuk membantu pengawasan dan pengelolaan proyek secara efisien. Aplikasi ini dirancang untuk memantau progres proyek secara real-time, mengatur timeline pekerjaan, mengelola tim, serta mendokumentasikan aktivitas harian proyek. Fitur utama termasuk tracking task, update status proyek, pengingat deadline, dashboard interaktif, serta notifikasi otomatis untuk memastikan setiap tahapan proyek berjalan sesuai rencana. Kutim mendukung pengambilan keputusan berbasis data dan mempermudah kolaborasi antar tim proyek di lapangan maupun secara remote.',
+        category: 'Mobile Development',
+        technologies: ['Flutter', 'Dart', 'REST API', 'Real-time Updates', 'Project Tracking'],
+        repositoryLink: '', // Isi dengan link GitHub repository Anda
+        images: [
+          '/images/projects/kutim/kutim-1.png',
+          '/images/projects/kutim/kutim-2.png',
+          '/images/projects/kutim/kutim-3.png',
+          '/images/projects/kutim/kutim-4.png',
+          '/images/projects/kutim/kutim-5.png',
+        ],
+        createdAt: '2024-08-10'
       }
+      
     
 ]
 

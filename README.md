@@ -100,6 +100,7 @@ npm run lint
   - Thumbnail navigation bar
   - Smooth zoom transitions
 - ✅ **Click-to-View**: Project cards open detail modal
+- ✅ **Client Showcase**: Display collaborated institutions/companies
 - ✅ **Skills Filter**: Filter by technology categories
 - ✅ **Contact Form**: Form validation and submission
 
@@ -124,6 +125,7 @@ src/
 │   ├── Hero.tsx        # Landing section
 │   ├── About.tsx       # Personal info
 │   ├── Skills.tsx      # Tech skills with filtering
+│   ├── Clients.tsx     # Collaborated institutions/companies
 │   ├── Projects.tsx    # Project showcase (CRUD)
 │   └── Contact.tsx     # Contact form
 ├── types.ts            # TypeScript interfaces

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { HiHome, HiUser, HiLightningBolt, HiBriefcase, HiMail, HiSun, HiMoon, HiMenuAlt3, HiX } from 'react-icons/hi'
+import { HiHome, HiUser, HiLightningBolt, HiBriefcase, HiMail, HiSun, HiMoon, HiMenuAlt3, HiX, HiOfficeBuilding } from 'react-icons/hi'
 
 interface NavbarProps {
   isDarkMode: boolean
@@ -72,6 +72,15 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
             >
               <HiLightningBolt className="w-5 h-5" />
               <span>Skills</span>
+            </button>
+            
+            <button 
+              onClick={() => scrollToSection('clients')} 
+              className="flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 hover:bg-white/10 hover:transform hover:-translate-y-1"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              <HiOfficeBuilding className="w-5 h-5" />
+              <span>Clients</span>
             </button>
             
             <button 
@@ -154,6 +163,15 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
               >
                 <HiLightningBolt className="w-5 h-5" />
                 <span>Skills</span>
+              </button>
+              
+              <button 
+                onClick={() => scrollToSection('clients')} 
+                className="w-full flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors hover:bg-white/10"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                <HiOfficeBuilding className="w-5 h-5" />
+                <span>Clients</span>
               </button>
               
               <button 
