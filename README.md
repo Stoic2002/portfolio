@@ -94,6 +94,11 @@ npm run lint
   - Image counter (1/3, 2/3, etc.)
   - Dot indicators for quick navigation
   - Hover effects and smooth transitions
+- ✅ **Image Lightbox**: 
+  - Click images to view full-size
+  - Keyboard navigation (ESC, ← →)
+  - Thumbnail navigation bar
+  - Smooth zoom transitions
 - ✅ **Click-to-View**: Project cards open detail modal
 - ✅ **Skills Filter**: Filter by technology categories
 - ✅ **Contact Form**: Form validation and submission

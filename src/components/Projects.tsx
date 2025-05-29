@@ -10,6 +10,8 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   const [filter, setFilter] = useState<'All' | 'Web Development' | 'Mobile Development'>('All')
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState<{[key: string]: number}>({})
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [lightboxImageIndex, setLightboxImageIndex] = useState(0)
 
   const nextImage = (projectId: string, maxIndex: number) => {
     setCurrentImageIndex(prev => ({
@@ -24,6 +26,53 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
       [projectId]: (prev[projectId] || 0) <= 0 ? maxIndex - 1 : (prev[projectId] || 0) - 1
     }))
   }
+
+  const openLightbox = (imageIndex: number) => {
+    setLightboxImageIndex(imageIndex)
+    setLightboxOpen(true)
+  }
+
+  const closeLightbox = () => {
+    setLightboxOpen(false)
+  }
+
+  const nextLightboxImage = () => {
+    if (selectedProject && selectedProject.images) {
+      setLightboxImageIndex(prev => 
+        prev >= selectedProject.images!.length - 1 ? 0 : prev + 1
+      )
+    }
+  }
+
+  const prevLightboxImage = () => {
+    if (selectedProject && selectedProject.images) {
+      setLightboxImageIndex(prev => 
+        prev <= 0 ? selectedProject.images!.length - 1 : prev - 1
+      )
+    }
+  }
+
+  // Handle keyboard navigation for lightbox
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (lightboxOpen) {
+        switch (e.key) {
+          case 'Escape':
+            closeLightbox()
+            break
+          case 'ArrowLeft':
+            prevLightboxImage()
+            break
+          case 'ArrowRight':
+            nextLightboxImage()
+            break
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [lightboxOpen, selectedProject])
 
   const filteredProjects = filter === 'All' 
     ? projects 
@@ -276,70 +325,19 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                         <img 
                           src={selectedProject.images[currentImageIndex[selectedProject.id] || 0]} 
                           alt={selectedProject.name}
-                          className="w-full h-64 md:h-80 object-cover rounded-xl"
+                          className="w-full h-64 md:h-80 object-cover rounded-xl cursor-pointer hover:opacity-90 transition-opacity"
+                          onClick={() => openLightbox(currentImageIndex[selectedProject.id] || 0)}
+                          title="Click to view full size"
                         />
                         
-                        {/* Navigation for multiple images */}
-                        {selectedProject.images.length > 1 && (
-                          <>
-                            <button 
-                              className="absolute left-3 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/80 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg border-2 border-white/20"
-                              onClick={() => {
-                                const currentIndex = currentImageIndex[selectedProject.id] || 0
-                                const newIndex = currentIndex <= 0 ? selectedProject.images!.length - 1 : currentIndex - 1
-                                setCurrentImageIndex(prev => ({
-                                  ...prev,
-                                  [selectedProject.id]: newIndex
-                                }))
-                              }}
-                              title="Previous Image"
-                            >
-                              <HiChevronLeft className="w-6 h-6" />
-                            </button>
-                            
-                            <button 
-                              className="absolute right-3 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/80 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg border-2 border-white/20"
-                              onClick={() => {
-                                const currentIndex = currentImageIndex[selectedProject.id] || 0
-                                const newIndex = currentIndex >= selectedProject.images!.length - 1 ? 0 : currentIndex + 1
-                                setCurrentImageIndex(prev => ({
-                                  ...prev,
-                                  [selectedProject.id]: newIndex
-                                }))
-                              }}
-                              title="Next Image"
-                            >
-                              <HiChevronRight className="w-6 h-6" />
-                            </button>
-                            
-                            {/* Image Counter */}
-                            <div className="absolute top-3 right-3 bg-black/80 text-white px-3 py-1 rounded-full text-sm font-medium">
-                              {(currentImageIndex[selectedProject.id] || 0) + 1} / {selectedProject.images.length}
-                            </div>
-                          </>
-                        )}
-                      </div>
-                      
-                      {selectedProject.images.length > 1 && (
-                        <div className="flex justify-center space-x-2 mt-4">
-                          {selectedProject.images.map((_, index) => (
-                            <button
-                              key={index}
-                              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                                index === (currentImageIndex[selectedProject.id] || 0) 
-                                  ? 'scale-125 shadow-lg' 
-                                  : 'opacity-50 hover:opacity-75'
-                              }`}
-                              style={{ backgroundColor: 'var(--accent-primary)' }}
-                              onClick={() => setCurrentImageIndex(prev => ({
-                                ...prev,
-                                [selectedProject.id]: index
-                              }))}
-                              title={`Image ${index + 1}`}
-                            />
-                          ))}
+                        {/* Zoom indicator */}
+                        <div className="absolute top-3 left-3 bg-black/80 text-white px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                          </svg>
+                          <span>Click to zoom</span>
                         </div>
-                      )}
+                      </div>
                     </div>
                   )}
                   
@@ -405,6 +403,86 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
           )}
         </div>
       </div>
+
+      {/* Image Lightbox Modal */}
+      {lightboxOpen && selectedProject && selectedProject.images && (
+        <div className="fixed inset-0 bg-black/95 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
+          <div className="relative w-full h-full flex items-center justify-center">
+            {/* Close button */}
+            <button 
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 w-12 h-12 bg-white/10 hover:bg-white/20 text-white rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 z-10"
+              title="Close (ESC)"
+            >
+              <HiX className="w-6 h-6" />
+            </button>
+
+            {/* Image counter */}
+            <div className="absolute top-4 left-4 bg-black/80 text-white px-4 py-2 rounded-full text-sm font-medium z-10">
+              {lightboxImageIndex + 1} / {selectedProject.images.length}
+            </div>
+
+            {/* Navigation buttons */}
+            {selectedProject.images.length > 1 && (
+              <>
+                <button 
+                  onClick={prevLightboxImage}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 w-16 h-16 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg border-2 border-white/20 z-10"
+                  title="Previous Image (←)"
+                >
+                  <HiChevronLeft className="w-8 h-8" />
+                </button>
+                
+                <button 
+                  onClick={nextLightboxImage}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 w-16 h-16 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg border-2 border-white/20 z-10"
+                  title="Next Image (→)"
+                >
+                  <HiChevronRight className="w-8 h-8" />
+                </button>
+              </>
+            )}
+
+            {/* Main image */}
+            <img 
+              src={selectedProject.images[lightboxImageIndex]} 
+              alt={`${selectedProject.name} - Image ${lightboxImageIndex + 1}`}
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              onClick={closeLightbox}
+              title="Click to close"
+            />
+
+            {/* Thumbnail navigation */}
+            {selectedProject.images.length > 1 && (
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 bg-black/50 p-2 rounded-lg">
+                {selectedProject.images.map((image, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setLightboxImageIndex(index)}
+                    className={`w-16 h-12 overflow-hidden rounded transition-all duration-300 border-2 ${
+                      index === lightboxImageIndex 
+                        ? 'border-white scale-110' 
+                        : 'border-white/50 opacity-70 hover:opacity-100'
+                    }`}
+                    title={`Image ${index + 1}`}
+                  >
+                    <img 
+                      src={image} 
+                      alt={`Thumbnail ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Instructions */}
+            <div className="absolute bottom-4 right-4 bg-black/50 text-white px-3 py-2 rounded-lg text-sm">
+              <div>ESC to close • ← → to navigate</div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
