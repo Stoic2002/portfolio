@@ -104,7 +104,7 @@ const About: React.FC = () => {
                     <HiBriefcase className="w-6 h-6" style={{ color: 'var(--accent-primary)' }} />
                     <div>
                       <h4 className="font-semibold" style={{ color: 'var(--text-primary)' }}>Experience</h4>
-                      <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>2+ Years<br />Frontend & Mobile Development</p>
+                      <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>1 Years<br />Frontend & Mobile Development</p>
                     </div>
                   </div>
                 </div>
@@ -117,7 +117,7 @@ const About: React.FC = () => {
                     <HiGlobeAlt className="w-6 h-6" style={{ color: 'var(--accent-primary)' }} />
                     <div>
                       <h4 className="font-semibold" style={{ color: 'var(--text-primary)' }}>Languages</h4>
-                      <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>Indonesian (Native)<br />English (Professional)</p>
+                      <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>Indonesian (Native)<br />English</p>
                     </div>
                   </div>
                 </div>

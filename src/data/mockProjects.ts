@@ -136,7 +136,7 @@ export const mockProjects: Project[] = [
         name: 'E-Pengawasan DPRD Jateng',
         description: 'Sebuah platform digital yang dibangun dengan React untuk mendukung fungsi pengawasan DPRD Jawa Tengah. Aplikasi ini mengintegrasikan teknologi Artificial Intelligence untuk mengklasifikasi dan menganalisis dokumen-dokumen pengawasan secara otomatis. Fitur utama meliputi AI-powered document classification, web scraping untuk monitoring isu-isu publik, sistem analisis sentimen, dashboard monitoring real-time, manajemen dokumen digital, serta reporting dan analytics yang komprehensif. Platform ini membantu anggota DPRD dalam melakukan pengawasan yang lebih efektif dan berbasis data terhadap pelaksanaan kebijakan pemerintah daerah.',
         category: 'Web Development',
-        technologies: ['React', 'JavaScript', 'AI/ML', 'Document Classification', 'Web Scraping', 'Natural Language Processing', 'Data Analytics', 'Node.js'],
+        technologies: ['React', 'TypeScript', 'AI/ML', 'Document Classification', 'Web Scraping', 'Natural Language Processing', 'Data Analytics', 'Node.js'],
         repositoryLink: '', // Isi dengan link GitHub repository Anda
         images: [
           '/images/projects/e-pengawasan/e-pengawasan-1.png',

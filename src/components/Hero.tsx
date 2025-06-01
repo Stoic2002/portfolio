@@ -68,7 +68,7 @@ const Hero: React.FC = () => {
               borderColor: 'var(--border-primary)'
             }}>
               <div className="text-3xl font-bold font-mono mb-1" style={{ color: 'var(--accent-primary)' }}>
-                2+
+                1
               </div>
               <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>
                 Years Experience
